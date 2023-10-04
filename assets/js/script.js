@@ -37,6 +37,7 @@ function getWeather(city) {
             console.log(data)
         });
         saveSearch(city);
+        pullStorage();
 }
 
 // save queries to local storage
@@ -77,18 +78,18 @@ function getForecast(city) {
 // display query history
 function pullStorage() {
     $('#list-group').empty();
-    if (localStorage.length === 0) {
-        if (lastCity) {
-            $('#search-value').attr("value", lastCity);
-        } else {
-            $('#search-value').attr("value", "Orlando");
-        }
-    } else {
-        // last city pushed to local storage
-        var lastCityKey = "cities" + (localStorage.length - 1);
-        lastCity = localStorage.getItem(lastCityKey);
-        // default input to last location searched
-        $('#search-value').attr("value", lastCity);
+    // if (localStorage.length === 0) {
+    //     if (lastCity) {
+    //         $('#search-value').attr("value", lastCity);
+    //     } else {
+    //         $('#search-value').attr("value", "Orlando");
+    //     }
+    // } else {
+    //     // last city pushed to local storage
+    //     var lastCityKey = "cities" + (localStorage.length - 1);
+    //     lastCity = localStorage.getItem(lastCityKey);
+    //     // default input to last location searched
+    //     $('#search-value').attr("value", lastCity);
         // display previous searches on page
         for (var i = 0; i < localStorage.length; i++) {
             var city = localStorage.getItem("cities" + i);
@@ -114,6 +115,6 @@ function pullStorage() {
         }
     }
 
-}
+// }
 
 pullStorage();
